@@ -54,8 +54,8 @@ FROM quay.io/fedora-ostree-desktops/silverblue:44@sha256:b4bcc283d192ebe809c733b
 
 # Image identity - these define how bootc, fastfetch, and the ublue ecosystem
 # recognize your image. Change these to match your project name.
-ARG IMAGE_NAME="finpilot"
-ARG IMAGE_VENDOR="projectbluefin"
+ARG IMAGE_NAME="blue-peek"
+ARG IMAGE_VENDOR="inpeek"
 ARG UBLUE_IMAGE_TAG="stable"
 ARG BASE_IMAGE_NAME="silverblue"
 ARG FEDORA_MAJOR_VERSION="44"
