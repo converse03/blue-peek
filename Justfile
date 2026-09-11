@@ -320,6 +320,10 @@ _rebuild-bib $target_image $tag $type $config: (build target_image tag) && (_bui
 # Build a QCOW2 virtual machine image
 [group('Build Virtual Machine Image')]
 build-qcow2 $target_image=("localhost/" + IMAGE_NAME) $tag=DEFAULT_TAG: && (_build-bib target_image tag "qcow2" "iso/disk.toml")
+    # Remove any prior qcow2 output first: _build-bib's `mv -f` into output/
+    # can leave stale files behind (or fail outright) when output/qcow2
+    # already exists as a non-empty directory from a previous build.
+    rm -rf output/qcow2
 
 # Build a RAW virtual machine image
 [group('Build Virtual Machine Image')]
