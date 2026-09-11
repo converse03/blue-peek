@@ -39,6 +39,28 @@ cp /ctx/custom/flatpaks/*.preinstall /usr/share/flatpak/preinstall.d/
 
 echo "::endgroup::"
 
+echo "::group:: Configure Flatpak Remotes"
+
+# `flatpak remote-add` writes into /var/lib/flatpak, but /var is not part of
+# the committed image (clean-stage.sh wipes it, and ostree/bootc don't carry
+# build-time /var content into the deployment anyway) — that state would
+# never reach first boot. Flatpak also supports statically preconfigured
+# remotes: a .flatpakrepo file dropped into /usr/share/flatpak/remotes.d/
+# is picked up automatically, and /usr *is* part of the image. Fetch the
+# real file (with its current signing key) instead of hand-authoring one.
+mkdir -p /usr/share/flatpak/remotes.d/
+curl -fsSL --retry 3 https://dl.flathub.org/repo/flathub.flatpakrepo \
+	-o /usr/share/flatpak/remotes.d/flathub.flatpakrepo
+
+# Install the oneshot service that actually processes
+# /usr/share/flatpak/preinstall.d/ on first boot (enabled below). Just
+# shipping the preinstall files does nothing without a trigger to run
+# `flatpak preinstall`.
+install -Dm644 /ctx/custom/systemd/flatpak-preinstall.service \
+	/usr/lib/systemd/system/flatpak-preinstall.service
+
+echo "::endgroup::"
+
 echo "::group:: Install Packages"
 
 # Install the default packages and verify the DNF cache is working.
@@ -57,6 +79,7 @@ systemctl enable podman.socket
 systemctl enable brew-setup.service
 systemctl enable brew-update.timer
 systemctl enable brew-upgrade.timer
+systemctl enable flatpak-preinstall.service
 # Example: systemctl mask unwanted-service
 
 echo "::endgroup::"

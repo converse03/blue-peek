@@ -1,0 +1,13 @@
+[Unit]
+Description=Install flatpaks staged in /usr/share/flatpak/preinstall.d
+After=network-online.target
+Wants=network-online.target
+ConditionPathIsDirectory=/usr/share/flatpak/preinstall.d
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/flatpak preinstall -y
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

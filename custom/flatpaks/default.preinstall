@@ -13,3 +13,6 @@
 
 ;[Flatpak Preinstall org.gnome.Calculator]
 ;Branch=stable
+
+[Flatpak Preinstall net.cozic.joplin_desktop]
+Branch=stable
