@@ -2,6 +2,14 @@
 set -euo pipefail
 install -Dm644 /ctx/custom/plymouth/blue-peek-boot-logo.png \
   /usr/share/plymouth/themes/bgrt/watermark.png
+
+# -R rebuilds the initramfs via dracut, which normally detects a container
+# build and skips preserving xattrs on its own. Under podman/buildah's
+# storage backend that detection doesn't always trigger, so dracut-install
+# logs a "Failed to copy xattr" warning per file as it stages the new
+# initramfs contents. Cosmetic (build still succeeds), but harmless to
+# silence explicitly rather than let the log fill up with noise.
+export DRACUT_NO_XATTR=1
 plymouth-set-default-theme -R bgrt
 
 # Without "quiet", systemd/kernel log lines print to the console instead of

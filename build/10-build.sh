@@ -67,8 +67,11 @@ echo "::group:: Install Packages"
 # gum is required by the default ujust recipes for interactive prompts.
 dnf5 install -y tmux gum
 
-# Example using COPR with isolated pattern:
-# copr_install_isolated "ublue-os/staging" package-name
+# ujust/just themselves aren't in Fedora's official repos under this name —
+# ublue-os-just (COPR) provides the `ujust`/`ugum` binaries, the master
+# justfile that auto-imports /usr/share/ublue-os/just/60-custom.just, and
+# pulls in `just` + `ublue-os-luks` as dependencies.
+copr_install_isolated "ublue-os/packages" ublue-os-just
 
 echo "::endgroup::"
 
