@@ -25,5 +25,18 @@ tee /etc/dconf/db/local.d/00-interface <<EOF
 color-scheme='prefer-dark'
 EOF
 
+# Default desktop/lock-screen background.
+install -Dm644 /ctx/custom/branding/background.png \
+	/usr/share/backgrounds/blue-peek/background.png
+tee /etc/dconf/db/local.d/01-background <<EOF
+[org/gnome/desktop/background]
+picture-uri='file:///usr/share/backgrounds/blue-peek/background.png'
+picture-uri-dark='file:///usr/share/backgrounds/blue-peek/background.png'
+picture-options='zoom'
+
+[org/gnome/desktop/screensaver]
+picture-uri='file:///usr/share/backgrounds/blue-peek/background.png'
+EOF
+
 # Compile the text keyfiles above into the binary db GNOME actually reads.
 dconf update
