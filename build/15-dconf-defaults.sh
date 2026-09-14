@@ -25,5 +25,15 @@ tee /etc/dconf/db/local.d/00-interface <<EOF
 color-scheme='prefer-dark'
 EOF
 
+tee /etc/dconf/db/local.d/01-background <<EOF
+[org/gnome/desktop/background]
+color-shading-type='solid'
+picture-options='zoom'
+picture-uri='file:///usr/share/backgrounds/gnome/curvy-l.jxl'
+picture-uri-dark='file:///usr/share/backgrounds/gnome/curvy-d.jxl'
+primary-color='#86b6ef'
+secondary-color='#000000'
+EOF
+
 # Compile the text keyfiles above into the binary db GNOME actually reads.
 dconf update
