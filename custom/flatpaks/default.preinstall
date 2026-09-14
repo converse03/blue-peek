@@ -7,3 +7,6 @@
 
 [Flatpak Preinstall net.cozic.joplin_desktop]
 Branch=stable
+
+[Flatpak Preinstall org.keepassxc.KeePassXC]
+Branch=stable
