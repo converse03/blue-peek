@@ -3,8 +3,6 @@
 # Format: INI file with [Flatpak Preinstall NAME] groups
 # See: https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-preinstall
 
-# Uncomment the apps you want installed on first boot:
-
 [Flatpak Preinstall net.cozic.joplin_desktop]
 Branch=stable
 
