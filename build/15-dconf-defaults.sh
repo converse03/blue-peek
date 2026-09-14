@@ -35,5 +35,12 @@ primary-color='#86b6ef'
 secondary-color='#000000'
 EOF
 
+tee /etc/dconf/db/local.d/02-background-logo <<EOF
+[org/fedorahosted/background-logo-extension]
+logo-file-dark='/usr/share/pixmaps/inpeek-logo-lightblue.svg'
+logo-position='bottom-right'
+logo-size=11.45021645021645
+EOF
+
 # Compile the text keyfiles above into the binary db GNOME actually reads.
 dconf update

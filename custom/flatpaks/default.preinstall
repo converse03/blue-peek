@@ -10,3 +10,6 @@ Branch=stable
 
 [Flatpak Preinstall org.keepassxc.KeePassXC]
 Branch=stable
+
+[Flatpak Preinstall com.mattjakeman.ExtensionManager]
+Branch=stable

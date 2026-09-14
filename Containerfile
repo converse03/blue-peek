@@ -56,10 +56,11 @@ FROM quay.io/fedora-ostree-desktops/silverblue:44@sha256:a9a512db5bfce55bb43bbf2
 # recognize your image. Change these to match your project name.
 ARG IMAGE_NAME="blue-peek"
 ARG IMAGE_VENDOR="inpeek"
+ARG IMAGE_PRETTY_NAME="Blue Peek"
 ARG UBLUE_IMAGE_TAG="stable"
 ARG BASE_IMAGE_NAME="silverblue"
 ARG FEDORA_MAJOR_VERSION="44"
-ARG VERSION=""
+ARG VERSION="AUT-002"
 
 ### MODIFICATIONS
 ## Make modifications desired in your image and install packages by modifying the build scripts.

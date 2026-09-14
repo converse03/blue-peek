@@ -29,6 +29,9 @@ echo "::group:: Copy Custom Files"
 mkdir -p /usr/share/ublue-os/homebrew/
 cp /ctx/custom/brew/*.Brewfile /usr/share/ublue-os/homebrew/
 
+# Copy Background logo
+cp /ctx/custom/corp/inpeek-logo-lightblue.svg /usr/share/pixmaps/
+
 # Consolidate Just Files
 mkdir -p /usr/share/ublue-os/just/
 find /ctx/custom/ujust -iname '*.just' -exec printf "\n\n" \; -exec cat {} \; >>/usr/share/ublue-os/just/60-custom.just
