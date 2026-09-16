@@ -3,8 +3,8 @@
 # Format: INI file with [Flatpak Preinstall NAME] groups
 # See: https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-preinstall
 
-[Flatpak Preinstall net.cozic.joplin_desktop]
-Branch=stable
+# [Flatpak Preinstall net.cozic.joplin_desktop]
+# Branch=stable
 
 [Flatpak Preinstall org.keepassxc.KeePassXC]
 Branch=stable
