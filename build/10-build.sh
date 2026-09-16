@@ -36,10 +36,6 @@ cp /ctx/custom/corp/inpeek-logo-lightblue.svg /usr/share/pixmaps/
 mkdir -p /usr/share/ublue-os/just/
 find /ctx/custom/ujust -iname '*.just' -exec printf "\n\n" \; -exec cat {} \; >>/usr/share/ublue-os/just/60-custom.just
 
-# Copy Flatpak preinstall files
-mkdir -p /usr/share/flatpak/preinstall.d/
-cp /ctx/custom/flatpaks/*.preinstall /usr/share/flatpak/preinstall.d/
-
 echo "::endgroup::"
 
 echo "::group:: Configure Flatpak Remotes"
